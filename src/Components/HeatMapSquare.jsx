@@ -1,18 +1,8 @@
 const HeatMapSquare = ({ data, rowName }) => {
-  let score = 0; // Default value
+  console.log('logging data in Square Component', data);
+  console.log('logging rowName in Square Component', rowName);
+  let score = data ? data : 0;
 
-  try {
-    if (Array.isArray(data?.data?.skillset)) {
-      data.data.skillset.forEach((element) => {
-        if (element?.skills?.[0]?.name === rowName) {
-          score = element?.skills?.[0]?.pos?.[0]?.consensus_score ?? 0;
-        }
-      });
-    }
-  } catch (error) {
-    console.error("Error extracting score:", error);
-    score = 0; // Ensure default value in case of an error
-  }
 
   // Function to get background color based on score
   const getColor = (value) => {
